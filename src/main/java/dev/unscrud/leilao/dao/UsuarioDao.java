@@ -1,8 +1,6 @@
 package dev.unscrud.leilao.dao;
 
 import javax.persistence.EntityManager;
-//import javax.persistence.PersistenceContext;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +9,6 @@ import dev.unscrud.leilao.model.Usuario;
 @Repository
 public class UsuarioDao {
 
-	// @PersistenceContext
 	private EntityManager em;
 
 	@Autowired
