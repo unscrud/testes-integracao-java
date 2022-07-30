@@ -16,9 +16,9 @@ public class UsuarioDao {
 		this.em = em;
 	}
 
-	public Usuario buscarPorUsername(String username) {
+	public Usuario buscarPorUsername(String nome) {
 		return em.createQuery("SELECT u FROM Usuario u WHERE u.nome = :username", Usuario.class)
-				.setParameter("username", username)
+				.setParameter("username", nome)
 				.getSingleResult();
 	}
 
