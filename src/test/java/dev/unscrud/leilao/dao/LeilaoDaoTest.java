@@ -10,6 +10,9 @@ import org.junit.jupiter.api.Test;
 
 import dev.unscrud.leilao.model.Usuario;
 import dev.unscrud.util.JPAUtil;
+import dev.unscrud.util.builder.LeilaoBuilder;
+import dev.unscrud.util.builder.UsuarioBuilder;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import dev.unscrud.leilao.model.Leilao;
@@ -32,8 +35,12 @@ public class LeilaoDaoTest {
 
   @Test
   public void deveriaCadastrarUmLeilao() {
-    Usuario usuario = criarUsuario();
-    Leilao leilao = new Leilao("Mochila", new BigDecimal("70"), LocalDate.now(), usuario);
+    Usuario usuario = new UsuarioBuilder().comNome("Fulano")
+        .comEmail("fulano@email.com").comSenha("pass").criar();
+    em.persist(usuario);
+
+    Leilao leilao = new LeilaoBuilder().comNome("Mochila").comValorInicial("500")
+        .comData(LocalDate.now()).comUsuario(usuario).criar();
 
     leilao = dao.salvar(leilao);
 
@@ -43,8 +50,12 @@ public class LeilaoDaoTest {
 
   @Test
   public void deveriaAtualizarUmLeilao() {
-    Usuario usuario = criarUsuario();
-    Leilao leilao = new Leilao("Mochila", new BigDecimal("70"), LocalDate.now(), usuario);
+    Usuario usuario = new UsuarioBuilder().comNome("Fulano")
+        .comEmail("fulano@email.com").comSenha("pass").criar();
+    em.persist(usuario);
+
+    Leilao leilao = new LeilaoBuilder().comNome("Mochila").comValorInicial("500")
+        .comData(LocalDate.now()).comUsuario(usuario).criar();
 
     leilao = dao.salvar(leilao);
 
@@ -58,9 +69,4 @@ public class LeilaoDaoTest {
     assertEquals(new BigDecimal("400"), salvo.getValorInicial());
   }
 
-  private Usuario criarUsuario() {
-    Usuario usuario = new Usuario("fulano", "fulano@unscrud.dev", "pass");
-    em.persist(usuario);
-    return usuario;
-  }
 }
