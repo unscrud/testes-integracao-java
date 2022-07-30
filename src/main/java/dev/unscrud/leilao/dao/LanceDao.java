@@ -2,6 +2,7 @@ package dev.unscrud.leilao.dao;
 
 import javax.persistence.EntityManager;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import dev.unscrud.leilao.model.Lance;
@@ -12,6 +13,7 @@ public class LanceDao {
 
 	private EntityManager em;
 
+	@Autowired
 	public LanceDao(EntityManager em) {
 		this.em = em;
 	}
