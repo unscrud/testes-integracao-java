@@ -27,6 +27,6 @@ public class LoginTest {
     browser.findElement(By.id("login-form")).submit();
     assertFalse(browser.getCurrentUrl().equals("LOGIN_URL"));
     assertEquals("fulano", browser.findElement(By.id("usuario-logado")).getText());
-    // browser.quit();
+    browser.quit();
   }
 }
