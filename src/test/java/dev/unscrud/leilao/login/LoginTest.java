@@ -16,7 +16,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class LoginTest {
   private WebDriver browser;
-  private final String LOGIN_URL = "http://localhost:8080/login";
+  private final String BASE_URL = "http://localhost:8080/";
+  private final String LOGIN_URL = BASE_URL + "login";
 
   @BeforeAll
   private static void antesDeTudo() {
@@ -43,9 +44,16 @@ public class LoginTest {
     browser.findElement(By.id("username")).sendKeys("usuarioinvalido");
     browser.findElement(By.id("password")).sendKeys("senhainvalida");
     browser.findElement(By.id("login-form")).submit();
-    assertTrue(browser.getCurrentUrl().contains(LOGIN_URL));
+    assertTrue(browser.getCurrentUrl().equals(LOGIN_URL + "?error"));
     assertTrue(browser.getPageSource().contains("Usuário e senha inválidos."));
     assertThrows(NoSuchElementException.class, () -> browser.findElement(By.id("usuario-logado")).getText());
+  }
+
+  @Test
+  public void naoDeveriaAcessarPaginaRestritaSemEstarLogado() {
+    browser.navigate().to(BASE_URL + "leiloes/2");
+    assertTrue(browser.getCurrentUrl().equals(LOGIN_URL));
+    assertFalse(browser.getPageSource().contains("Dados do Leilão"));
   }
 
   @AfterEach
