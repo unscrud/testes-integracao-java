@@ -5,6 +5,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import dev.unscrud.leilao.leiloes.LeiloesPage;
+
 public class LoginPage {
   private WebDriver browser;
   private final String BASE_URL = "http://localhost:8080/";
@@ -25,8 +27,9 @@ public class LoginPage {
     browser.findElement(By.id("password")).sendKeys(senha);
   }
 
-  public void efetuaLogin() {
+  public LeiloesPage efetuaLogin() {
     browser.findElement(By.id("login-form")).submit();
+    return new LeiloesPage(browser);
   }
 
   public boolean isPaginaDeLogin() {
