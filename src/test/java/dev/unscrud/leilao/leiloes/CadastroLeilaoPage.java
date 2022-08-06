@@ -3,18 +3,14 @@ package dev.unscrud.leilao.leiloes;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class CadastroLeilaoPage {
-  private final String BASE_URL = "http://localhost:8080/leiloes";
-  private final String NOVO_LEILAO_URL = BASE_URL + "/new";
+import dev.unscrud.leilao.PageObject;
 
-  private WebDriver browser;
+public class CadastroLeilaoPage extends PageObject {
+  private static final Object LEILOES_URL = BASE_URL + "leiloes";
+  private static final String NOVO_LEILAO_URL = BASE_URL + "/new";
 
   public CadastroLeilaoPage(WebDriver browser) {
-    this.browser = browser;
-  }
-
-  public void fechar() {
-    browser.quit();
+    super(browser);
   }
 
   public LeiloesPage cadastrarLeilao(String nome, String valorInicial, String dataAbertura) {
@@ -30,7 +26,7 @@ public class CadastroLeilaoPage {
   }
 
   public boolean isPaginaDeLeiloes() {
-    return browser.getCurrentUrl().equals(BASE_URL);
+    return browser.getCurrentUrl().equals(LEILOES_URL);
   }
 
   public boolean isMensagensDeValidacaoVisiveis() {

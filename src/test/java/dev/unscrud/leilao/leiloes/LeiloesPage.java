@@ -4,18 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class LeiloesPage {
-  private WebDriver browser;
+import dev.unscrud.leilao.PageObject;
 
-  private final String BASE_URL = "http://localhost:8080/leiloes";
-  private final String NOVO_LEILAO_URL = BASE_URL + "/new";
+public class LeiloesPage extends PageObject {
+  private static final String NOVO_LEILAO_URL = BASE_URL + "leiloes/new";
 
   public LeiloesPage(WebDriver browser) {
-    this.browser = browser;
-  }
-
-  public void fechar() {
-    this.browser.quit();
+    super(browser);
   }
 
   public CadastroLeilaoPage abrirFormulario() {
