@@ -2,24 +2,15 @@ package dev.unscrud.leilao.login;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
+import dev.unscrud.leilao.PageObject;
 import dev.unscrud.leilao.leiloes.LeiloesPage;
 
-public class LoginPage {
-  private WebDriver browser;
-  private final String BASE_URL = "http://localhost:8080/";
-  private final String LOGIN_URL = BASE_URL + "login";
+public class LoginPage extends PageObject {
+  private static final String LOGIN_URL = BASE_URL + "login";
 
   public LoginPage() {
-    System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-    browser = new ChromeDriver();
+    super(null);
     browser.navigate().to(LOGIN_URL);
-  }
-
-  public void fechar() {
-    this.browser.quit();
   }
 
   public void preencheUsuarioSenha(String usuario, String senha) {
