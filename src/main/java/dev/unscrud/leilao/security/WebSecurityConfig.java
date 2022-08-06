@@ -25,13 +25,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 				.antMatchers(HttpMethod.GET, "/").permitAll()
 				.antMatchers(HttpMethod.GET, "/leiloes").permitAll()
+				.antMatchers("/h2-console/**").permitAll()
 				.anyRequest().authenticated()
-				.and()
-				.formLogin(form -> form.loginPage("/login").defaultSuccessUrl("/leiloes", true).permitAll())
+				.and().formLogin(form -> form.loginPage("/login")
+						.defaultSuccessUrl("/leiloes", true).permitAll())
 				.logout(logout -> {
 					logout.logoutUrl("/logout").logoutSuccessUrl("/leiloes");
 				})
-				.csrf().disable();
+				.csrf().disable().headers().frameOptions().sameOrigin();
 	}
 
 	@Override
