@@ -1,5 +1,6 @@
 package dev.unscrud.leilao.leiloes;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
@@ -39,8 +40,9 @@ public class LeiloesTest {
 
   @Test
   public void deveriaValidarCadastroDeLeilao() {
-    this.paginaDeLeiloes = paginaDeCadastro.cadastrarLeilao(null, null, null);
-    assertTrue(this.paginaDeCadastro.isPaginaAtual());
+    this.paginaDeLeiloes = paginaDeCadastro.cadastrarLeilao("", "", "");
+    assertFalse(this.paginaDeCadastro.isPaginaDeCadastro());
+    assertTrue(this.paginaDeCadastro.isPaginaDeLeiloes());
     assertTrue(this.paginaDeCadastro.isMensagensDeValidacaoVisiveis());
   }
 }
