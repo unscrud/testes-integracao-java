@@ -25,8 +25,12 @@ public class CadastroLeilaoPage {
     return new LeiloesPage(browser);
   }
 
-  public boolean isPaginaAtual() {
+  public boolean isPaginaDeCadastro() {
     return browser.getCurrentUrl().equals(NOVO_LEILAO_URL);
+  }
+
+  public boolean isPaginaDeLeiloes() {
+    return browser.getCurrentUrl().equals(BASE_URL);
   }
 
   public boolean isMensagensDeValidacaoVisiveis() {
