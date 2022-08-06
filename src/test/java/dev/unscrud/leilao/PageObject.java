@@ -1,5 +1,7 @@
 package dev.unscrud.leilao;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -12,6 +14,9 @@ public class PageObject {
     if (browser == null)
       browser = new ChromeDriver();
     this.browser = browser;
+    this.browser.manage().timeouts()
+        .implicitlyWait(5, TimeUnit.SECONDS)
+        .pageLoadTimeout(10, TimeUnit.SECONDS);
   }
 
   public void fechar() {
