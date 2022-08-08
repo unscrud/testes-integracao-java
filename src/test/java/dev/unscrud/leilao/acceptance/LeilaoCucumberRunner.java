@@ -8,5 +8,4 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "classpath:features")
 public class LeilaoCucumberRunner {
-  
 }
