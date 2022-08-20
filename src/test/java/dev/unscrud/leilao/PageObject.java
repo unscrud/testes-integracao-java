@@ -2,8 +2,11 @@ package dev.unscrud.leilao;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PageObject {
   protected static final String BASE_URL = "http://localhost:8080/";
@@ -21,5 +24,10 @@ public class PageObject {
 
   public void fechar() {
     browser.quit();
+  }
+
+  public void esperaCarregar(String elemento) {
+    WebDriverWait wait = new WebDriverWait(browser, 2);
+    wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(elemento)));
   }
 }
