@@ -21,3 +21,9 @@ Exemplos:
 | valor | nomeUsuario |
 | 0.0   | Jonas       |
 | -1.0  | Joana       |
+
+Cenario: Propondo uma sequencia de lances
+Dado um lance de 10.0 reais do usuario "Zenaldo"
+E um lance de 15.0 reais do usuario "Zenaldo"
+Quando propoe os lances
+Entao o segundo lance nao eh aceito

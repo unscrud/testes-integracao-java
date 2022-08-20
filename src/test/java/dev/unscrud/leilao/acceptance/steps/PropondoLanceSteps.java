@@ -57,7 +57,7 @@ public class PropondoLanceSteps {
     assertEquals(this.lista.get(0).getValor(), leilao.getLances().get(0).getValor());
     assertEquals(this.lista.get(1).getValor(), leilao.getLances().get(1).getValor());
   }
-
+  
   @Dado("um lance invalido de {double} reais do usuario {string}")
   public void dado_um_lance_invalido(Double valor, String nomeUsuario) {
     System.out.println(nomeUsuario);
@@ -67,5 +67,11 @@ public class PropondoLanceSteps {
   @Entao("o lance nao eh aceito")
   public void entao_o_lance_nao_eh_aceito() {
     assertEquals(0, leilao.getLances().size());
+  }
+  
+  @Entao("o segundo lance nao eh aceito")
+  public void entao_o_segundo_lance_nao_eh_aceito() {
+    assertEquals(1, leilao.getLances().size());
+    assertEquals(this.lista.get(0).getValor(), leilao.getLances().get(0).getValor());
   }
 }
