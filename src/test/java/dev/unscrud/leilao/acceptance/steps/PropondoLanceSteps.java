@@ -63,8 +63,9 @@ public class PropondoLanceSteps {
 
   @Dado("um lance invalido de {double} reais do usuario {string}")
   public void dado_um_lance_invalido(Double valor, String nomeUsuario) {
-    System.out.println(nomeUsuario);
-    lance = new Lance(new BigDecimal(valor));
+    Usuario usuario = new Usuario(nomeUsuario);
+    BigDecimal valorBD = new BigDecimal(valor);
+    lance = new Lance(usuario, valorBD);
   }
 
   @Entao("o lance nao eh aceito")
