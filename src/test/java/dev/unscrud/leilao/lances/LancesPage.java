@@ -15,7 +15,9 @@ public class LancesPage extends PageObject {
   }
 
   public boolean isTituloLeilaoVisivel() {
-    return browser.getPageSource().contains("Dados do Leilão");
+    String texto = "Dados do Leilão";
+    esperaCarregar("//h1[contains(text(),'" + texto + "')]");
+    return browser.getPageSource().contains(texto);
   }
 
 }
