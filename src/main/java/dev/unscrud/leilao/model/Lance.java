@@ -38,10 +38,7 @@ public class Lance {
 	public Lance() {
 	}
 
-	public Lance(Usuario usuario, BigDecimal valor) {
-		if (valor.doubleValue() <= 0) {
-			throw new IllegalArgumentException();
-		}
+	public Lance(Usuario usuario, @NotNull @DecimalMin("0.1") BigDecimal valor) {
 		this.usuario = usuario;
 		this.valor = valor;
 		this.data = LocalDate.now();
