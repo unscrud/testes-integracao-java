@@ -7,7 +7,8 @@ import org.openqa.selenium.WebElement;
 import dev.unscrud.leilao.PageObject;
 
 public class LeiloesPage extends PageObject {
-  private static final String NOVO_LEILAO_URL = BASE_URL + "leiloes/new";
+  private static final String LEILOES_URL = BASE_URL + "leiloes";
+  private static final String NOVO_LEILAO_URL = LEILOES_URL + "/new";
 
   public LeiloesPage(WebDriver browser) {
     super(browser);
@@ -28,5 +29,9 @@ public class LeiloesPage extends PageObject {
     return colunaNome.getText().equals(nome)
         && colunaDataAbertura.getText().equals(data)
         && colunaValorInicial.getText().equals(valor);
+  }
+
+  public boolean isPaginaDeLeiloes() {
+    return browser.getCurrentUrl().equals(LEILOES_URL);
   }
 }
