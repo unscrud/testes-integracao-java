@@ -1,5 +1,5 @@
 # language: pt
-
+@login
 Funcionalidade: Apenas usuarios cadastrados podem se logar
 
 Cenario: Um usuario valido consegue se logar

@@ -1,4 +1,6 @@
 # language: pt
+
+@lances
 Funcionalidade: Propondo lances
 
 Cenario: Propondo um unico lance valido
